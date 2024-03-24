@@ -2,8 +2,8 @@
   <header class="v-header">
     <v-container>
       <v-row align="center" no-gutters class="header">
-        <v-row class="left">
-          <router-link class="nav-button first" to="/">о нас</router-link>
+        <v-row class="left" align="center">
+          <router-link class="nav-button first" to="/">kitchin</router-link>
           <span class="nav-button">распродажа</span>
           <span class="nav-button">вопросы</span>
           <img src="@/assets/icons/search.svg" alt="" class="search" />
@@ -11,7 +11,7 @@
 
         <span class="company-name">kitchin</span>
 
-        <v-row justify="end" class="right">
+        <v-row justify="end" class="right" align="center">
           <router-link to="/ordering">
             <img src="@/assets/icons/account.svg" alt="" class="nav-icon" />
           </router-link>
@@ -98,6 +98,7 @@ function onSearch() {
 
 .header {
   display: flex;
+  text-align: center;
 }
 
 .left {
@@ -119,6 +120,8 @@ function onSearch() {
 
 .nav-button.first {
   margin-left: 97px;
+  font-size: 30px;
+  font-weight: 800;
 }
 
 .search {
