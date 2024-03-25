@@ -1,17 +1,10 @@
 <script setup>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { useCart, useFavorites } from "@/composables";
-import { useCatalogCategory } from "@/composables/useCatalogCategory";
 import VContainer from "@/components/VContainer.vue";
 import VRow from "@/components/UI/VRow.vue";
 import VCol from "@/components/UI/VCol.vue";
-import VButton from "@/components/UI/VButton.vue";
-import VCollapse from "@/components/UI/VCollapse.vue";
-import VCatalogCard from "@/components/VCatalogCard.vue";
 import VLayoutDefault from "@/components/Layouts/VLayoutDefault.vue";
-import VHeaderCard from "@/components/VHeaderCard.vue";
-import VCustomLayout from "@/components/UI/VCustomLayout.vue";
 
 const route = useRoute();
 const router = useRouter();
@@ -21,38 +14,41 @@ const filter = ref({
   color: route.query.color,
 });
 
-const { products, pagination, getProductsCategory } = useCatalogCategory();
-const { onAddToCart } = useCart();
-const { onToggleFavorites } = useFavorites();
-
-getProductsCategory(route.params.category, filter.value);
-
-async function onFilter() {
-  await getProductsCategory(route.params.category, filter.value);
-
-  router.push({
-    query: filter.value,
-  });
+function generateRandomNumber() {
+  // Генерируем случайное число от 1 до 3
+  return Math.floor(Math.random() * 3) + 1;
 }
 
-async function onReset() {
-  filter.value = {
-    brand: undefined,
-    color: undefined,
-  };
+const id =
+  route.params.category < 5
+    ? 0
+    : route.params.category > 5 && route.params.category < 10
+    ? 1
+    : 2;
 
-  await getProductsCategory(route.params.category, filter.value);
-
-  router.push({
-    query: filter.value,
-  });
-}
-
-async function onChangePage(page) {
-  await getProductsCategory(route.params.category, {
-    _page: page,
-  });
-}
+const itemList = [
+  {
+    image: "/src/assets/images/tarelkabig1.svg",
+    collection: "kuroi",
+    title: "Тарелка «Сундо», 12 см",
+    price: "2 000 ₽",
+    desc: "Тарелка выполнена из прочного материала, который позволит Вам всегда наслаждаться трапезой вместе с нашим товаром. Тарелка «Сундо» отлично подойдет для сервировки плотных блюд.",
+  },
+  {
+    image: "/src/assets/images/tarelkabig2.svg",
+    collection: "sundo",
+    title: "Набор «Эйпуриру», 9-22 см",
+    price: "14 299 ₽",
+    desc: "Обеденная тарелка «Эйпуриру» отлично подойдет для летнего застолья. Тарелка выполнена в нежных летних цветах, оформлена в гибкую форму, имитируя кувшинку.",
+  },
+  {
+    image: "/src/assets/images/tarelkabig3.svg",
+    collection: "sundo",
+    title: "Тарелка «Аои», 22 cм",
+    price: "3 500 ₽",
+    desc: "«Аои» выполнена в классической стилизации тарелок для роллов и суши. Благодаря своей форме и длине, Вы насладитесь аутентичными японскими нотами.",
+  },
+];
 
 function backPage() {
   router.back();
@@ -70,7 +66,7 @@ function backPage() {
             </button>
           </v-row>
           <v-row class="image-container" justify="center">
-            <img src="@/assets/images/tarelkabig1.svg" alt="" />
+            <img :src="itemList[id].image" alt="" :key="image" />
           </v-row>
           <v-row class="card-dilivery-info" justify="beetwen">
             <span class="card-dilivery-text">
@@ -95,14 +91,10 @@ function backPage() {
         </v-col>
         <v-col class="right">
           <div class="item-info-container">
-            <p class="collection-info">kuroi</p>
-            <p class="title">Тарелка «Сундо», 12 см</p>
-            <p class="price">2 000 ₽</p>
-            <p class="desc">
-              Тарелка выполнена из прочного материала, который позволит Вам
-              всегда наслаждаться трапезой вместе с нашим товаром. Тарелка
-              «Сундо» отлично подойдет для сервировки плотных блюд.
-            </p>
+            <p class="collection-info">{{ itemList[id].collection }}</p>
+            <p class="title">{{ itemList[id].title }}</p>
+            <p class="price">{{ itemList[id].price }}</p>
+            <p class="desc">{{ itemList[id].desc }}</p>
             <button class="folder-button">добавить в коризну</button>
             <p></p>
             <button class="all-button">
