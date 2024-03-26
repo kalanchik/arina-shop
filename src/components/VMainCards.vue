@@ -5,19 +5,19 @@ import VContainerCard from "@/components/VContainerCard.vue";
 
 const tarelki1 = [
   {
-    id: 1,
+    id: 4,
     title: "Набор «Тотемо»",
     price: 7000,
     image: "/src/assets/images/tarelka1.svg",
   },
   {
-    id: 2,
+    id: 97,
     title: "Тарелка «Эдо», 12 см",
     price: 3999,
     image: "/src/assets/images/tarelka2.svg",
   },
   {
-    id: 3,
+    id: 98,
     title: "Тарелка «Цки», 16 см",
     price: 1899,
     image: "/src/assets/images/tarelka3.svg",
@@ -25,7 +25,7 @@ const tarelki1 = [
 ];
 const tarelki2 = [
   {
-    id: 4,
+    id: 3,
     title: "2 миски, 2 тарелки  «Такеру»",
     price: 6000,
     image: "/src/assets/images/tarelka4.svg",
@@ -45,7 +45,7 @@ const tarelki2 = [
 ];
 const tarelki3 = [
   {
-    id: 7,
+    id: 2,
     title: "Набор «Эйпуриру»",
     price: 14299,
     image: "/src/assets/images/tarelka7.svg",
@@ -65,7 +65,7 @@ const tarelki3 = [
 ];
 const tarelki4 = [
   {
-    id: 10,
+    id: 1,
     title: "Тарелка «Сундо»",
     price: 2000,
     image: "/src/assets/images/tarelka10.svg",

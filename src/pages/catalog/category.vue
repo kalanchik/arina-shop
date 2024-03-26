@@ -20,11 +20,13 @@ function generateRandomNumber() {
 }
 
 const id =
-  route.params.category < 5
+  route.params.category == 1
     ? 0
-    : route.params.category > 5 && route.params.category < 10
+    : route.params.category == 2
     ? 1
-    : 2;
+    : route.params.category == 3
+    ? 2
+    : 1;
 
 const itemList = [
   {
@@ -43,10 +45,10 @@ const itemList = [
   },
   {
     image: "/src/assets/images/tarelkabig3.svg",
-    collection: "sundo",
-    title: "Тарелка «Аои», 22 cм",
-    price: "3 500 ₽",
-    desc: "«Аои» выполнена в классической стилизации тарелок для роллов и суши. Благодаря своей форме и длине, Вы насладитесь аутентичными японскими нотами.",
+    collection: "kuroi",
+    title: "Набор 2 миски, 2 тералки «Токеру», 12 - 16 см",
+    price: "6 000 ₽",
+    desc: "Не подходит для использования в микроволновой печи. Рекомендуется мыть вручную с применением мягких моющих средств. Не использовать для ухода абразивные чистящие средства и жесткие губки.",
   },
 ];
 
